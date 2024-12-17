@@ -1,0 +1,74 @@
+(defcfg
+  input (iokit-name)
+  output (kext)
+  cmp-seq-delay 5
+  fallthrough true
+)
+
+(defalias
+    ls (tap-hold-next-release 200 f lsft)
+    lc (tap-hold-next-release 200 d lctl)
+    la (tap-hold-next-release 200 s lalt)
+    lm (tap-hold-next-release 200 a lmet)
+    rs (tap-hold-next-release 200 j lsft)
+    rc (tap-hold-next-release 200 k lctl)
+    ra (tap-hold-next-release 200 l lalt)
+    rm (tap-hold-next-release 200 ; lmet)
+    fn (around (layer-toggle function) fn)
+    bs (tap-next-press bspc (tap-next-press lsft (layer-toggle nums)))
+    sp (tap-next-press spc (layer-toggle nav))
+)
+
+(defsrc
+    esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+    grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+    tab  q    w    e    r    t    y    u    i    o    p    [    ]
+    caps a    s    d    f    g    h    j    k    l    ;    '    \    ret
+    lsft z    x    c    v    b    n    m    ,    .    /    rsft up
+    fn   lctl lalt lmet           spc            rmet ralt left down rght
+)
+
+(deflayer default
+    _    brdn brup lp  mctl bldn blup prev pp next mute vold volu
+    _    _    _    _    _    _    _    _    _    _    _    _    _    _
+    _    _    _    _    _    _    _    _    _    _    _    _    _
+    _   @lm  @la  @lc  @ls   _    _   @rs  @rc  @ra  @rm   _    _    _
+    _    _    _    _    _    _    _    _    _    _    _    _    _
+   @fn   _    _    _             _             @bs   _    _    _    _
+)
+
+(deflayer function
+    _   f1  f2  f3  f4  f5  f6  f7  f8  f9  f10 f11 f12
+    _   _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   _   _           _           _   _   _   _   _
+)
+
+(deflayer nav
+    _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   _   _   _   _   left   down up   right   _   _   _    _
+    _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   _   _           _           _   _   _   _   _
+)  
+
+(deflayer nums
+    _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   7   8   9   _   _   _   _   _   _   _   _
+    _   _   4   5   6   _   _   _   _   _   _   _   _   _
+    _   0   1   2   3   _   _   _   _   _   _   _   _
+    _   _   _   _           _           _   _   _   _   _
+)  
+
+(deflayer syms
+    _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   _   _   _   _   _   _   _   _   _   _   _   _
+    _   _   &   *   \(  _   _   _   _   _   _   _   _
+    _   _   $   %   ^   _   _   _   _   _   _   _   _   _
+    _   \)  !   @   @   _   _   _   _   _   _   _   _
+    _   _   _   _           _           _   _   _   _   _
+)
